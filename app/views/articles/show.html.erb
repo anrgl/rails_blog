@@ -6,3 +6,33 @@
   <li><%= link_to "Edit", edit_article_path(@article) %></li>
   <li><%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></li>
 </ul>
+
+<h2>Comments:</h2>
+<% @article.comments.each do |comment| %>
+  <div>
+    <strong>Author:</strong>
+    <%= comment.author %>
+  </div>
+  
+  <div>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </div>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ @article, @article.comments.build ] do |form| %>
+  <div>
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div>
+    <%= form.label :body %>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
