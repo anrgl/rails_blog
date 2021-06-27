@@ -11,6 +11,29 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <%= link_to 'Rails Blog', root_path, class: 'navbar-brand' %>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <% if request.original_url == new_article_url %>
+                  <%= link_to 'New article', new_article_path, class: 'nav-link active' %>
+                <% else %>
+                  <%= link_to 'New article', new_article_path, class: 'nav-link' %>
+                <% end %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="row align-items-start">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
