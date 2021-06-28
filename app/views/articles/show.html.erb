@@ -2,10 +2,10 @@
 
 <p><%= @article.body %></p>
 
-<ul>
-  <li><%= link_to "Edit", edit_article_path(@article) %></li>
-  <li><%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></li>
-</ul>
+<div class="pb-3">
+  <i class="fa fa-pen" aria-hidden="true"> <%= link_to "Edit", edit_article_path(@article) %></i>
+  <i class="fa fa-trash" aria-hidden="true"> <%= link_to "Delete", article_path(@article), method: :delete, data: { confirm: "Are you sure?" } %></i>
+</div>
 
 <h2>Comments:</h2>
 <%= render @article.comments %>
